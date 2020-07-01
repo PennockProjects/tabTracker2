@@ -5,4 +5,7 @@ module.exports = (server) => {
     AuthenticationControllerPolicy.register,
     AuthenticationController.register
   )
+  server.post('/login',
+  AuthenticationController.login
+)
 }

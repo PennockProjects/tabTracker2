@@ -22,6 +22,7 @@
               label="password"
               name="password"
               v-model="password"
+              autocomplete="new-password"
               prependIcon="lock"
               placeholder="password" />
             <br>
@@ -76,7 +77,9 @@ export default {
           email: this.email,
           password: this.password
         })
-        console.log(response.data)
+        console.log('register response', response.data)
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (err) {
         this.error = err.response.data.error
       }
